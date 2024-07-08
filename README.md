@@ -3,7 +3,7 @@
 Plugin to load car textures from loose files in FlatOut
 
 ![ingame preview](https://i.imgur.com/oBOq456.png)
-![filesystem preview](https://i.imgur.com/YifEvfR.png)
+![filesystem preview](https://i.imgur.com/mzWNVzC.png)
 
 ## Installation
 

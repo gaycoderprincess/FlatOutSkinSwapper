@@ -7,6 +7,7 @@
 #include <d3dx9.h>
 #include "toml++/toml.hpp"
 #include "nya_commonhooklib.h"
+#include "../nya-common-fouc/fo2versioncheck.h"
 
 #include "game.h"
 
@@ -361,10 +362,7 @@ void __attribute__((naked)) LoadMenuCarSkinASM() {
 BOOL WINAPI DllMain(HINSTANCE, DWORD fdwReason, LPVOID) {
 	switch( fdwReason ) {
 		case DLL_PROCESS_ATTACH: {
-			if (NyaHookLib::GetEntryPoint() != 0x1E829F) {
-				MessageBoxA(nullptr, "Unsupported game version! Make sure you're using v1.1 (.exe size of 2822144 bytes)", "nya?!~", MB_ICONERROR);
-				return TRUE;
-			}
+			DoFlatOutVersionCheck(FO2Version::FO1_1_1);
 
 			auto config = toml::parse_file("FlatOutSkinSwapper_gcp.toml");
 			bReplaceAllCarsTextures = config["main"]["replace_all_cars"].value_or(false);
